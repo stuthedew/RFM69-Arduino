@@ -79,22 +79,82 @@
 #define REGOPMODE 0x01
 
 
-
+// Data operation mode and Modulation settings
 #define REGDATAMODUL 0x02
 
-
+//Bit Rate setting, Most Significant Bits
 #define REGBITRATE_MSB 0x03
+//Bit Rate setting, Least Significant Bits
 #define REGBITRATE_LSB 0x04
 
-
+//Frequency Deviation setting, Most Significant Bits
 #define REGFDEV_MSB 0x05
+//Frequency Deviation setting, Least Significant Bits
 #define REGFDEV_LSB 0x06
 
+//RF Carrier Frequency, Most Significant Bits
 #define REGFRF_MSB 0x07
-#define REGFRF_LSB 0x08
+//RF Carrier Frequency, Intermediate Bits
+#define REGFRF_MID 0x08
+//RF Carrier Frequency, Least Significant Bits
+#define REGFRF_MID 0x09
 
+//RC Oscillators Settings
 #define REGOSC1 0x0A
 
+//AFC control in low modulation index situations
 #define REGAFCCTRL 0x0B
 
+//Listen Mode settings
 #define REGLISTEN1 0x0D
+//Listen Mode Idle duration
+#define REGLISTEN2 0x0E
+//Listen Mode Rx duration
+#define REGLISTEN3 0x0F
+
+#define REGVERSION 0x10
+
+//PA selection and Output Power control
+#define REGPALEVEL 0x11
+
+//Control of the PA ramp time in FSK mode
+#define REGPARAMP 0x12
+
+//Over Current Protection control
+#define REGOCP 0x13
+
+//LNA settings
+#define REGLNA 0x18
+
+//Channel Filter BW Control
+#define REGRXBW 0x19
+
+//Channel Filter BW control during the AFC routine
+#define REGAFCBW 0x1A
+
+//OOK demodulator selection and control in peak mode
+#define REGOOKPEAK 0x1B
+
+//Average threshold control of the OOK demodulator
+#define REGOOKAVG 0x1C
+
+//Fixed threshold control of the OOK demodulator
+#define REGOOKFIX 0x1D
+
+//AFC and FEI control and status
+#define REGAFCFEI 0x1E
+
+//MSB of the frequency correction of the AFC
+#define REGAFC_MSB 0x1F
+//LSB of the frequency correction of the AFC
+#define REGADC_LSB 0x20
+
+//MSB of the calculated frequency error
+#define REGFEI_MSB 0x21
+//LSB of the calculated frequency error
+#define REGFEIL_LSB 0x22
+
+//RSSI-related settings
+#define REGRSSICONFIG 0x23
+
+//RSSI value in dBm

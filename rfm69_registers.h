@@ -158,3 +158,22 @@
 #define REGRSSICONFIG 0x23
 
 //RSSI value in dBm
+#define REGRSSIVALUE 0x24
+
+//Mapping of pins DIO0 to DIO3
+#define REGDIOMAPPING1 0x25
+//Mapping of pins DIO4 and DIO5, ClkOut frequency
+#define REGDIOMAPPING2 0x26
+
+//Status register: PLL Lock state, Timeout, RSSI > Threshold
+#define REQIRQFLAGS1 0x27
+//Status register: FIFO handling flags
+#define REQIRQFLAGS2 0x28
+
+//RSSI Threshold control
+#define REGRSSITHRESH 0x29
+
+//Timeout duration between Rx request and RSSI detection
+#define REGRXTIMEOUT1 0x2A
+//Timeout duration between RSSI detection and PayloadReady
+#define REGRXTIMEOUT2 0x2B

@@ -40,7 +40,7 @@
 
 
 /*  REGOPMODE register (0x01) - Operating modes of the transceiver
-     ====================================================================
+     =======================================================================
      BIT  Symbol       Description                                     Default
      ---  ------       ---------------------------------------------   -------
       7   SEQ_OFF      Controls the automatic Sequencer (See Sec 4.2)     0
@@ -77,16 +77,108 @@
 
 //Register
 #define REG_OP_MODE 0x01
-  #define SEQ_OFF 7
-  #define LISTEN_ON 6
-  #define LISTEN_ABORT 5
-  #define RF_SLEEP 0b000
-  #define RF_STDBY 0b001
-  
+
+#define SEQ_OFF 7
+#define LISTEN_ON 6
+#define LISTEN_ABORT 5
+
+//Transceiver’s operating modes
+#define MODE 4
+#define RF_SLEEP 0b000
+#define RF_STDBY 0b001
+#define RF_FS 0b010
+#define RF_TX 0b011
+#define RF_RX 0b100
 
 
-// Data operation mode and Modulation settings
+//
+/*  RegDataModul register (0x02) - Data operation mode and Modulation settings
+     =========================================================================
+     BIT  Symbol       Description                                     Default
+     ---  ------       ---------------------------------------------   -------
+      7     --         Reserved
+
+     6:5  DATA_MODE    Data processing mode:                              00
+
+                         ===============================================
+                            MODE     |         Description
+                         ===============================================
+                             00      | Packet Mode (PACKET)
+                             01      | Reserved
+                             10      | Continuous mode with bit
+                                       synchronizer (CM_SYNC)
+                             11      | Continuous mode without bit
+                                       synchronizer (CM_NOSYNC)
+
+    4:3  MOD_TYPE      Modulation Type:                                   0
+
+                         ===============================================
+                            TYPE     |         Description
+                         ===============================================
+                             00      | Frequency-Shift Keying (FSK)
+                             01      | On-Off Keying (OOK)
+                             10      | Reserved
+                             11      | Reserved
+
+     2     --          Reserved
+
+
+    1:0  MOD_SHAPE     Modulation Shaping                                 0
+                         IF MOD_TYPE == FSK:
+                          ===============================================
+                            SHAPE     |         Description
+                          ===============================================
+                              00      | (NO_SHAPE)
+                              01      | Gaussian filter, BT = 1.0
+                                        (GAUSS_1_0)
+
+                              10      | Gaussian filter, BT = 0.5
+                                        (GAUSS_0_5)
+
+                              11      | Gaussian filter, BT = 0.3
+                                        (GAUSS_0_3)
+
+
+                          IF MOD_TYPE == OOK:
+                           ===============================================
+                              TYPE     |         Description
+                           ===============================================
+                               00      | (NO_SHAPE)
+                               01      | filtering with f_cutoff = BR
+                                         (FILTER_BR)
+
+                               10      | filtering with f_cutoff = 2*BR
+                                         (FILTER_2BR)
+
+                               11      | Reserved
+
+
+
+       ===================================================================*/
+
+//Register
 #define REG_DATA_MODUL 0x02
+
+//Data processing mode
+#define DATA_MODE 6
+#define PACKET 0b00
+#define CM_SYNC 0b10
+#define CM_NOSYNC 0b11
+
+//Modulation Type
+#define MOD_TYPE 4
+#define FSK 0b00
+#define OOK 0b01
+
+//Modulation Shaping
+#define MOD_SHAPE 1
+#define NO_SHAPE 0b00
+#define GAUSS_1_0 0b01
+#define GAUSS_0_5 0b10
+#define GAUSS_0_3 0b11
+#define FILTER_BR 0b01
+#define FILTER_2BR 0b10
+
 
 //Bit Rate setting, Most Significant Bits
 #define REG_BITRATE_MSB 0x03
